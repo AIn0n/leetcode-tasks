@@ -1,14 +1,13 @@
+from collections import defaultdict
+
 class Solution:
     def isIsomorphic(self, s: str, t: str) -> bool:
-        res = t
-        mapped = []
-        for c1, c2 in zip(t, s):
-            if c2 not in mapped:
-                res = res.replace(c1, c2)
-                mapped.append(c2)
-            print(res)
-        return res == s
+        mapping = defaultdict(str)
+        for i in range(len(s)):
+            if s[i] not in mapping.values():
+                mapping[t[i]] = s[i]
+        return "".join(mapping[c] for c in t) == s
     
 sol = Solution()
 
-print(sol.isIsomorphic("foo", "bar"))
+print(sol.isIsomorphic("badc", "baba"))
