@@ -2,19 +2,17 @@ class Solution:
 
     MAX_CAP = 10**9 + 7
 
-    def partition(t, s: str, stopper: str = "0") -> list[str]:
-        res = [""]
-        stop_adding = False
+    def partition(t, s: str, stopper: str = "0"):
+        res = ""
         for el in s:
             if el == stopper:
-                if stop_adding is not True:
-                    res.append("")
-                stop_adding = True
+                if len(res) > 0:
+                    yield res
+                    res = ""
                 continue
-            res[-1] += el
-            stop_adding = False
-        
-        return res
+            res += el
+        yield res
+
 
     def numSub(self, s: str) -> int:
         substrings = self.partition(s)
