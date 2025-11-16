@@ -25,5 +25,5 @@ class Solution:
                 res += 1
             else:
                 res += (n + 1) * n // 2
-        return res % MAX_CAP
+        return res % self.MAX_CAP
         
